@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bulma css template -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <title>
+    3D-GOI
+  </title>
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <section class="section">
+
+  <div class="container has-text-centered">
+    <!-- paper title -->
+    <p class="title is-3"> TKN: Transformer-based Keypoint Prediction Network for Real-time Video Prediction </p>
+    <!-- publication -->
+    <!-- authors -->
+    <p class="title is-5 mt-2"> 
+      <a href="https://jahnsonblack.github.io" target="_blank">Haoran Li</a><sup>1</sup>, 
+      <a href="" target="_blank">Xiaolu Li</a><sup>1</sup>, 
+      <a href="https://pengyuan-zhou.github.io/" target="_blank">Pengyuan Zhou</a><sup>2</sup>
+      <a href="" target="_blank">Yong Liao</a><sup>1</sup><sup>*</sup>,  
+    </p>
+    <!-- affiliations -->
+    <p class="subtitle is-5"> 
+      <sup>1</sup> University of Science and Technology of China &nbsp;
+      <sup>2</sup> Aarhus University &nbsp;
+    </p>
+
+    <!-- other links -->
+    <div class="is-flex is-justify-content-center">
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://arxiv.org/pdf/2303.09807" role="button" target="_blank"> <span class="icon"> <ion-icon name="document-outline"></ion-icon> </span> <span> arXiv </span>  </a> 
+      </span>
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://github.com/Jahnsonblack/TKN" role="button" target="_blank"> <span class="icon"> <ion-icon name="logo-github"></ion-icon> </span> <span> Code (Coming Soon) </span> </a> 
+      </span>
+    </div>
+  </div>
+
+  <!-- main container -->
+  <div class="container is-max-desktop has-text-centered">
+
+    <!-- abstract -->
+    <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+    <p class="content is-size-6 has-text-left">
+    Video prediction is a complex time-series forecasting task with great potential in many use cases. However, traditional methods prioritize accuracy and overlook slow prediction speeds due to complex model structures, redundant information, and excessive GPU memory consumption. These methods often predict frames sequentially, making acceleration difficult and limiting their applicability in real-time scenarios like danger prediction and warning.Therefore, we propose a transformer-based keypoint prediction neural network (TKN). TKN extracts dynamic content from video frames in an unsupervised manner, reducing redundant feature computation. And, TKN uses an acceleration matrix to reduce the computational cost of attention and employs a parallel computing structure for prediction acceleration. To the best of our knowledge, TKN is the first real-time video prediction solution that achieves a prediction rate of 1,176 fps, significantly reducing computation costs while maintaining other performance. Qualitative and quantitative experiments on multiple datasets have demonstrated the superiority of our method, suggesting that TKN has great application potential.
+    </p>
+
+    <p class="title is-3 mt-5 has-text-centered"> Approach </p>
+    <a href="images/overview.png">
+      <img src="images/overview.png" alt="Approach of 3D-GOI"/>
+    </a>
+    <p class="content has-text-left is-size-6">
+    The overview of TKN. Two main modules are the Keypoint Detector and the Predictor marked 
+    with the blue and yellow undertones. The predicted frame uses the background information 
+    extracted from the last frame of the input. Both the inputting stage and prediction stage 
+    allow batch processing (e.g., input multiple frames simultaneously) and thus enable temporal 
+    parallelism. Note that the ground truth keypoints information,
+    <i>P</i><sub>real</sub> = (
+        <span style="text-decoration:overline;"><i>P</i></span><sub>t+1</sub>,
+        &hellip;,
+        <span style="text-decoration:overline;"><i>P</i></span><sub>2t</sub>
+    ),
+    is output by <i>X</i><sub>t+1</sub>, &hellip;, <i>X</i><sub>2t</sub> using the keypoint detector 
+    (excluded from the figure for simplicity). 
+    <i>L</i><sub>pred</sub> loss is marked with the red undertones.
+    </p>
+
+
+    <p class="title is-3 mt-5 has-text-centered">Result</p>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:20px; margin-top:10px;">
+    <div class="has-text-centered">
+        <img src="images/caltech.png" style="width:100%; border-radius:6px;">
+        <p class="is-size-6 mt-1">Dataset Caltech Pedestrian (10 → 1)</p>
+    </div>
+    <div class="has-text-centered">
+        <img src="images/human36.png" style="width:100%; border-radius:6px;">
+        <p class="is-size-6 mt-1">Dataset Human36 (4 → 4)</p>
+    </div>
+    <div class="has-text-centered">
+        <img src="images/mnist.png" style="width:100%; border-radius:6px;">
+        <p class="is-size-6 mt-1">Dataset Moving Mnist (10 → 10)</p>
+    </div>
+    <div class="has-text-centered">
+        <img src="images/kth.png" style="width:100%; border-radius:6px;">
+        <p class="is-size-6 mt-1">Dataset KTH (10 → 40)</p>
+    </div>
+    </div>
+
+    
+
+    <!-- citation -->
+    <div class="card mt-4">
+      <header class="card-header">
+        <p class="card-header-title"> Citation </p>
+      </header>
+      <div class="card-content is-size-5 has-text-left">
+<pre><code>
+@article{li2023tkn,
+  title={TKN: Transformer-based Keypoint Prediction Network For Real-time Video Prediction},
+  author={Li, Haoran and Zhou, Pengyuan and Lin, Yihang and Hao, Yanbin and Xie, Haiyong and Liao, Yong},
+  journal={arXiv preprint arXiv:2303.09807},
+  year={2023}
+}</code></pre>
+      </div>
+    </div>
+
+  </div>
+  </section>
+</body>
+</html>
